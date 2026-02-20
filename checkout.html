@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Checkout - Waroenk Andya</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-5sT3cm8cp-vPWvcE"></script>
+
+</head>
+<body>
+
+    <header class="checkout-header">
+        <a href="index.html" class="btn-back"><i class="ri-arrow-left-line"></i></a>
+        <h3>Rincian Pesanan</h3>
+    </header>
+
+    <main class="checkout-container">
+        
+        <div class="order-summmary-card">
+            <h3>Menu yang Dipesan</h3>
+            <div id="order-list">
+                </div>
+            
+            <div style="margin-top: 15px; border-top: 1px dashed #444; padding-top: 10px;">
+                <div class="bill-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal-display">Rp 0</span>
+                </div>
+                <div class="bill-row">
+                    <span>Pajak (10%)</span>
+                    <span id="tax-display">Rp 0</span>
+                </div>
+                <div class="bill-row total">
+                    <span>Total Bayar</span>
+                    <span id="total-display">Rp 0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-summmary-card">
+            <h3>Data Pemesan (Wajib)</h3>
+            
+            <div class="form-group" style="margin-bottom:15px; margin-top:0;">
+                <label>Nama Lengkap</label>
+                <input type="text" id="cust-name" placeholder="Nama Kakak...">
+            </div>
+
+            <div class="form-group" style="margin-bottom:15px; margin-top:0;">
+                <label>Nomor WhatsApp</label>
+                <input type="number" id="cust-wa" placeholder="Contoh: 08123456789">
+            </div>
+
+            <div class="form-group" style="margin-top:0;">
+                <label>Email (Opsional)</label>
+                <input type="email" id="cust-email" placeholder="email@contoh.com">
+            </div>
+        </div>
+
+        <div id="payment-section-container">
+            </div>
+
+    </main>
+
+    <div style="height: 100px;"></div>
+
+    <div class="bottom-action-bar">
+        <button class="btn-pay" onclick="processOrder()">
+            Konfirmasi Pesanan
+        </button>
+    </div>
+
+    <div id="receipt-modal" class="receipt-overlay">
+        <div class="receipt-paper">
+            <div class="receipt-header">
+                <h3 style="margin:0; font-weight:800;">WAROENK ANDYA</h3>
+                <p style="margin:5px 0; font-size:0.8rem; color:#555;">Panjunan, Sidoarjo</p>
+                <div style="border-bottom:2px dashed #000; margin:10px 0;"></div>
+                <p id="receipt-meta" style="font-size:0.85rem; text-align:left; line-height:1.4;">
+                    </p>
+                <div style="border-bottom:1px dashed #000; margin:10px 0;"></div>
+            </div>
+
+            <div id="receipt-items" style="text-align:left; font-size:0.9rem; margin-bottom:15px; min-height:50px;">
+                </div>
+
+            <div style="border-top:2px dashed #000; margin:10px 0;"></div>
+            
+            <div class="receipt-total">
+                <span>TOTAL</span>
+                <span id="receipt-total-display">Rp 0</span>
+            </div>
+
+            <div style="margin-top:20px;" id="receipt-actions">
+                </div>
+            
+            <p style="text-align:center; margin-top:15px; font-size:0.7rem; color:#777;">Simpan bukti ini sebelum menutup.</p>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

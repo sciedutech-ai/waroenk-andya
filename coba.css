@@ -1,0 +1,250 @@
+/* ==========================================================================
+   GACOAN-STYLE HOME PAGE (RUSTIC NIGHT THEME)
+   ========================================================================== */
+
+/* 1. HEADER BARU */
+.gacoan-header {
+    background: var(--bg-body);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; top: 0; z-index: 50;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-left .loc-label {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    display: block;
+    margin-bottom: 2px;
+}
+
+.header-left .loc-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-light);
+    display: flex; align-items: center; gap: 5px;
+}
+
+.icon-btn-header {
+    width: 40px; height: 40px;
+    background: var(--bg-card);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-light);
+    border: 1px solid #333;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* 2. HERO BANNER */
+.hero-section { padding: 15px 20px 0 20px; }
+.banner-container {
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    aspect-ratio: 2/1; /* Rasio gambar banner */
+    border: 1px solid #333;
+}
+.banner-img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 3. STORE INFO CARD */
+.store-info-wrapper { padding: 15px 20px; }
+.store-card {
+    background: var(--bg-card);
+    border-radius: 15px;
+    padding: 15px;
+    display: flex; align-items: center; gap: 15px;
+    border: 1px solid #333;
+    box-shadow: var(--shadow-card);
+}
+.store-logo img {
+    width: 50px; height: 50px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+.store-text h3 {
+    font-size: 1.1rem; color: var(--text-light); margin-bottom: 4px;
+}
+.store-text p {
+    font-size: 0.85rem; color: var(--text-dim); display: flex; align-items: center; gap: 5px;
+}
+.store-text p i { color: var(--neon-green); }
+
+/* 4. SEARCH BAR STYLE */
+.search-wrapper-gacoan { padding: 0 20px 10px 20px; }
+.search-box-gacoan {
+    background: var(--bg-card);
+    border: 1px solid #444;
+    border-radius: 12px;
+    padding: 12px 15px;
+    display: flex; align-items: center; gap: 10px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+}
+.search-box-gacoan i { color: var(--text-dim); font-size: 1.1rem; }
+.search-box-gacoan input {
+    background: transparent; border: none; color: white;
+    width: 100%; outline: none; font-size: 0.95rem;
+}
+
+/* 5. SECTION HEADER */
+.section-header { padding: 10px 20px 5px 20px; }
+.section-header h3 { font-size: 1.1rem; color: var(--text-light); font-weight: 700; }
+
+/* 6. MENU LIST STYLE (LAYOUT HORIZONTAL SEPERTI OUTLET) */
+.menu-list-container {
+    padding: 10px 20px 100px 20px; /* Padding bawah extra untuk cart */
+    display: flex; flex-direction: column; gap: 15px;
+}
+
+/* Override .menu-card untuk tampilan List */
+.menu-card {
+    display: flex;
+    background: var(--bg-card);
+    border-radius: 15px;
+    padding: 12px;
+    align-items: center;
+    border: 1px solid #333;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    position: relative;
+    transition: transform 0.2s;
+}
+.menu-card:active { transform: scale(0.98); }
+
+.menu-img-wrapper {
+    width: 80px; height: 80px; /* Kotak persegi seperti referensi */
+    border-radius: 12px;
+    overflow: hidden; flex-shrink: 0;
+    margin-right: 15px;
+    border: 1px solid #444;
+}
+
+.menu-details {
+    flex: 1;
+    display: flex; flex-direction: column; justify-content: center;
+    overflow: hidden;
+}
+
+.menu-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 5px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.menu-info-row {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.8rem; color: var(--text-dim);
+}
+
+.menu-price-tag {
+    color: var(--neon-gold);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-top: 5px;
+}
+
+/* Tombol Aksi di Kanan (Chevron/Add) */
+.menu-action-right {
+    width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-dim);
+}
+
+/* --- CONFIG TINGGI HEADER --- */
+:root {
+    --header-height: 70px; /* Tinggi perkiraan Header Lokasi */
+}
+
+/* 1. Header Lokasi (Sticky Paling Atas) */
+.gacoan-header {
+    background: var(--bg-body);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* LOGIKA STICKY 1 */
+    position: sticky; 
+    top: 0; 
+    z-index: 100; /* Layer paling atas */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Bayangan tipis pemisah */
+    height: var(--header-height); /* Tetapkan tinggi pasti */
+    width: 100%;
+}
+
+/* 2. Container Search & Kategori (Sticky di Bawah Header) */
+.sticky-nav-container {
+    background: var(--bg-body);
+    padding-top: 10px;
+    padding-bottom: 5px;
+    
+    /* LOGIKA STICKY 2 */
+    position: sticky;
+    top: var(--header-height); /* Menempel tepat di bawah Header Lokasi */
+    z-index: 90; /* Layer di bawah header tapi di atas menu */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Bayangan ke bawah */
+}
+
+/* Penyesuaian agar tidak ada celah putih */
+.hero-section {
+    margin-top: -1px; /* Trik menutup celah pixel rendering */
+}
+
+/* Pastikan elemen lain tetap rapi */
+.search-wrapper-gacoan { padding: 5px 20px 10px 20px; }
+.section-header { padding: 5px 20px; }
+.category-nav { padding: 5px 20px 15px 20px; }
+.menu-list-container { padding: 10px 20px 100px 20px; }
+
+/* --- HEADER ADJUSTMENTS --- */
+
+/* Pastikan sisi kanan menggunakan Flexbox agar Meja & History sejajar */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Jarak antara No Meja dan tombol History */
+}
+
+/* Styling Baru untuk Badge Nomor Meja */
+.table-badge {
+    background: rgba(255, 193, 7, 0.15); /* Latar Emas Transparan */
+    border: 1px solid var(--neon-gold);
+    color: var(--neon-gold);
+    padding: 6px 12px;
+    border-radius: 50px; /* Bentuk Pill */
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 40px; /* Samakan tinggi dengan tombol history */
+}
+
+.table-badge i {
+    font-size: 1.1rem;
+    font-weight: normal;
+}
+
+/* Update Tombol History agar ukurannya pas */
+.icon-btn-header {
+    width: 40px; 
+    height: 40px;
+    background: var(--bg-card);
+    border-radius: 50%; /* Lingkaran penuh agar lebih modern */
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    color: var(--text-light);
+    border: 1px solid #444;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.icon-btn-header:active {
+    background: #333;
+    transform: scale(0.95);
+}

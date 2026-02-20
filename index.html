@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Waroenk Andya Sawah</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+    <div class="gacoan-header">
+        <div class="header-left">
+            <span class="loc-label">Lokasi Waroenk</span>
+            <div class="loc-value">
+                <i class="ri-map-pin-fill" style="color:var(--primary)"></i> 
+                <span>Panjunan, Sidoarjo</span> 
+            </div>
+        </div>
+
+        <div class="header-right">
+            <div class="table-badge">
+                <i class="ri-table-alt-line"></i>
+                <span id="display-table-number">...</span>
+            </div>
+            
+            <div class="icon-btn-header" onclick="location.href='track.html'">
+                <i class="ri-history-line"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-section">
+        <div class="banner-container">
+            <img src="/assets/images/waroenk.webp" class="banner-img" alt="Banner">
+        </div>
+    </div>
+
+    <div class="store-info-wrapper">
+        <div class="store-card">
+            <div class="store-logo">
+                <img src="/assets/images/logo.jpg" alt="Logo">
+            </div>
+            <div class="store-text">
+                <h3>Waroenk Andya</h3>
+                <p><i class="ri-store-2-line"></i> Outlet Panjunan, Sidoarjo</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="sticky-nav-container">
+        <div class="search-wrapper-gacoan">
+            <div class="search-box-gacoan">
+                <i class="ri-search-line"></i>
+                <input type="text" id="search-input" placeholder="Cari menu favoritmu...">
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h3>Daftar Menu</h3>
+        </div>
+
+        <div class="category-nav">
+            <button class="cat-btn active" data-category="all">Semua</button>
+            
+            <button class="cat-btn" data-category="spesial">Spesial</button>
+            <button class="cat-btn" data-category="makanan">Makanan</button>
+            <button class="cat-btn" data-category="mie-geger">Mie Geger</button>
+            <button class="cat-btn" data-category="mie-instan">Mie Instan</button>
+            <button class="cat-btn" data-category="dimsum">Dimsum</button>
+            <button class="cat-btn" data-category="snack">Camilan</button>
+            <button class="cat-btn" data-category="sayuran">Sayuran</button>
+            <button class="cat-btn" data-category="paket">Paket</button>
+            <button class="cat-btn" data-category="minuman">Minuman</button>
+        </div>
+    </div>
+
+    <div id="menu-container" class="menu-list-container">
+        </div>
+    
+
+    <div id="product-modal" class="modal-overlay">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeModal()">&times;</button>
+        
+        <img id="modal-img" src="" alt="Produk" class="modal-hero-img">
+        
+        <div class="modal-body">
+            <h2 id="modal-title">Nama Menu</h2>
+            <p id="modal-desc" class="modal-description">Deskripsi produk di sini.</p>
+            
+            <div class="modal-price-row">
+                <span id="modal-price" class="modal-price-value">Rp 0</span>
+            </div>
+
+            <div id="variant-section" style="display:none; margin-top:15px;">
+                <label style="color:var(--text-dim); font-size:0.9rem;">Pilih Varian:</label>
+                <div id="variant-options" class="chips-container"></div>
+            </div>
+
+            <div class="form-group" style="margin-top:20px;">
+                <label>Catatan Tambahan</label>
+                <input type="text" id="modal-note" placeholder="Contoh: Pedas banget, Tanpa seledri...">
+            </div>
+            
+            <button class="btn-neon-fill" onclick="addToCart()" style="margin-top:20px;">
+                <i class="ri-shopping-cart-2-line"></i> TAMBAH KE KERANJANG
+            </button>
+        </div>
+    </div>
+</div>
+    <div id="cart-wrapper" class="floating-cart-wrapper" onclick="showCheckout()">
+        <div class="cart-bar">
+            <div class="cart-info">
+                <div class="count-badge" id="cart-count">0</div>
+                <div class="price-info">
+                    <small>Total</small>
+                    <strong id="cart-total">Rp 0</strong>
+                </div>
+            </div>
+            <div class="cart-action">
+                <span>Lihat Pesanan</span>
+                <i class="ri-arrow-right-s-line"></i>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-modal" class="modal-overlay">...</div>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

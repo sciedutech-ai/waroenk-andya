@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Waroenk Andya Sawah</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="header-content">
+            <div class="brand-info">
+                <h1>Waroenk Andya</h1>
+                <p><i class="ri-map-pin-line"></i> Panjunan, Sidoarjo</p>
+            </div>
+            <div class="table-indicator">
+                <span>Meja</span>
+                <strong id="display-table-number">-</strong>
+            </div>
+        </div>
+        
+        <div class="search-container">
+            <i class="ri-search-line"></i>
+            <input type="text" id="search-input" placeholder="Cari menu kesukaanmu...">
+        </div>
+            <nav class="category-nav">
+                <button class="cat-btn active" data-category="all">Semua</button>
+                <button class="cat-btn" data-category="paket">Paket Keluarga</button>
+                <button class="cat-btn" data-category="makanan">Makanan</button>
+                <button class="cat-btn" data-category="snack">Snack & Dessert</button>
+                <button class="cat-btn" data-category="minuman">Minuman Segar</button>
+            </nav>
+    </header>
+
+
+
+    <main id="menu-container" class="menu-grid">
+        <div style="text-align:center; padding:50px; color:#aaa;">
+            <i class="ri-loader-4-line ri-spin" style="font-size:2rem;"></i><br>Memuat Menu...
+        </div>
+    </main>
+
+    <div class="floating-cart-wrapper" id="cart-wrapper">
+        <div class="cart-bar" onclick="showCheckout()">
+            <div class="cart-info">
+                <span class="count-badge" id="cart-count">0</span>
+                <div class="price-info">
+                    <small>Total Pesanan</small>
+                    <strong id="cart-total">Rp 0</strong>
+                </div>
+            </div>
+            <div class="cart-action">
+                <span>Lihat Pesanan</span>
+                <i class="ri-arrow-right-s-line"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="product-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Nama Menu</h3>
+                <button class="btn-close" onclick="closeModal()"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="modal-body">
+                <img src="" alt="" id="modal-img" class="modal-hero-img">
+                <p id="modal-desc">Deskripsi menu...</p>
+                <div class="form-group">
+                    <label>Catatan Tambahan</label>
+                    <input type="text" id="modal-note" placeholder="Cth: Jangan pakai bawang, es dikit...">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-add-to-cart" onclick="addToCart()">
+                    <span>Tambah Pesanan</span>
+                    <span id="modal-price">Rp 0</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

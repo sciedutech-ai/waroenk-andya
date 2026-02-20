@@ -1,0 +1,182 @@
+[
+  {
+    "id": 101,
+    "name": "Pak Mat Bakar B10 (10 Org)",
+    "category": "paket",
+    "price": 545000,
+    "image": "https://placehold.co/400x300/2F5233/FFF?text=Paket+Bakar+10",
+    "desc": "Gurame, Ayam Bakar, Cah Kangkung, Tahu Tempe, Nasi Sebakul, Sambal.",
+    "options": null
+  },
+  {
+    "id": 102,
+    "name": "Pak Mat Sambelan B10 (10 Org)",
+    "category": "paket",
+    "price": 360000,
+    "image": "https://placehold.co/400x300/2F5233/FFF?text=Paket+Sambelan+10",
+    "desc": "Bebek, Ayam, Lele, Jamur, Telur, Nasi Sebakul, Sambal.",
+    "options": null
+  },
+  {
+    "id": 103,
+    "name": "Pak Mat Bakar B5 (5 Org)",
+    "category": "paket",
+    "price": 250000,
+    "image": "https://placehold.co/400x300/2F5233/FFF?text=Paket+Bakar+5",
+    "desc": "Gurame, Ayam Bakar, Cah Kangkung, Tahu Tempe.",
+    "options": null
+  },
+  {
+    "id": 201,
+    "name": "Gurame Bakar",
+    "category": "makanan",
+    "price": 66000,
+    "image": "https://placehold.co/400x300/D4AF37/FFF?text=Gurame+Bakar",
+    "desc": "Gurame bakar bumbu kecap meresap.",
+    "options": null
+  },
+  {
+    "id": 202,
+    "name": "Ayam Bakar Bumbu Rujak (Utuh)",
+    "category": "makanan",
+    "price": 88000,
+    "image": "https://placehold.co/400x300/D4AF37/FFF?text=Ayam+Bakar+Rujak",
+    "desc": "Ayam utuh 1 ekor dengan bumbu rujak pedas manis.",
+    "options": null
+  },
+  {
+    "id": 301,
+    "name": "Nasi Bebek Goreng",
+    "category": "makanan",
+    "price": 28000,
+    "image": "https://placehold.co/400x300/2F5233/FFF?text=Bebek+Goreng",
+    "desc": "Nasi bebek goreng empuk dengan sambal.",
+    "options": { "type": "level", "label": "Pilih Sambal", "values": ["Sambal Korek", "Sambal Ijo", "Sambal Tomat"] }
+  },
+  {
+    "id": 302,
+    "name": "Nasi Bebek Bakar",
+    "category": "makanan",
+    "price": 32000,
+    "image": "https://placehold.co/400x300/2F5233/FFF?text=Bebek+Bakar",
+    "desc": "Nasi bebek bakar manis gurih.",
+    "options": null
+  },
+  {
+    "id": 303,
+    "name": "Nasi Ayam Goreng",
+    "category": "makanan",
+    "price": 20000,
+    "image": "https://placehold.co/400x300/2F5233/FFF?text=Ayam+Goreng",
+    "desc": "Ayam goreng laos/kremes.",
+    "options": null
+  },
+  {
+    "id": 304,
+    "name": "Nasi Lele Goreng",
+    "category": "makanan",
+    "price": 14000,
+    "image": "https://placehold.co/400x300/2F5233/FFF?text=Lele+Goreng",
+    "desc": "Lele goreng garing + lalapan.",
+    "options": null
+  },
+  {
+    "id": 401,
+    "name": "Mie Geger",
+    "category": "makanan",
+    "price": 15000,
+    "image": "https://placehold.co/400x300/AA0000/FFF?text=Mie+Geger",
+    "desc": "Mie goreng pedas nampol khas Waroenk Andya.",
+    "options": { "type": "level", "label": "Level Pedas", "values": ["Gak Geger (Lvl 0)", "Geger Cilik (Lvl 1)", "Geger Sedang (Lvl 2)", "Geger Geden (Lvl 3)", "Mati Rasa (Lvl 4)"] }
+  },
+  {
+    "id": 501,
+    "name": "Cah Kangkung",
+    "category": "makanan",
+    "price": 17000,
+    "image": "https://placehold.co/400x300/2F5233/FFF?text=Cah+Kangkung",
+    "desc": "Tumis kangkung terasi segar.",
+    "options": { "type": "radio", "label": "Pedas?", "values": ["Tidak Pedas", "Pedas"] }
+  },
+  {
+    "id": 601,
+    "name": "Seblak Komplit",
+    "category": "snack",
+    "price": 14000,
+    "image": "https://placehold.co/400x300/AA0000/FFF?text=Seblak",
+    "desc": "Kerupuk basah dengan kuah kencur pedas.",
+    "options": { "type": "level", "label": "Level Pedas", "values": ["Sedang", "Pedas", "Sangat Pedas"] }
+  },
+  {
+    "id": 602,
+    "name": "Dimsum (3 pcs)",
+    "category": "snack",
+    "price": 11000,
+    "image": "https://placehold.co/400x300/eee/333?text=Dimsum",
+    "desc": "Pilihan Siomay Ayam atau Tahu.",
+    "options": null
+  },
+  {
+    "id": 701,
+    "name": "Tahu Walik",
+    "category": "snack",
+    "price": 12000,
+    "image": "https://placehold.co/400x300/eee/333?text=Tahu+Walik",
+    "desc": "Tahu isi aci digoreng renyah.",
+    "options": null
+  },
+  {
+    "id": 702,
+    "name": "Pisang Keju",
+    "category": "snack",
+    "price": 8000,
+    "image": "https://placehold.co/400x300/D4AF37/FFF?text=Pisang+Keju",
+    "desc": "Pisang goreng tabur keju dan susu.",
+    "options": null
+  },
+  {
+    "id": 801,
+    "name": "Ice Cream Sundae",
+    "category": "snack",
+    "price": 16000,
+    "image": "https://placehold.co/400x300/pink/FFF?text=Sundae",
+    "desc": "Es krim lembut dengan topping.",
+    "options": { "type": "radio", "label": "Topping", "values": ["Chocolate", "Strawberry", "Oreo"] }
+  },
+  {
+    "id": 901,
+    "name": "Kopi Hitam",
+    "category": "kopi",
+    "price": 6000,
+    "image": "https://placehold.co/400x300/6F4E37/FFF?text=Kopi+Hitam",
+    "desc": "Kopi tubruk tradisional.",
+    "options": null
+  },
+  {
+    "id": 902,
+    "name": "Wedang Jahe Susu",
+    "category": "kopi",
+    "price": 8000,
+    "image": "https://placehold.co/400x300/D4AF37/FFF?text=Jahe+Susu",
+    "desc": "Minuman jahe hangat dengan susu kental manis.",
+    "options": null
+  },
+  {
+    "id": 1001,
+    "name": "Ocean Blue Ice",
+    "category": "minuman",
+    "price": 16000,
+    "image": "https://placehold.co/400x300/0000AA/FFF?text=Ocean+Blue",
+    "desc": "Minuman soda biru segar dengan biji selasih.",
+    "options": null
+  },
+  {
+    "id": 1002,
+    "name": "Es Teh / Lemon Tea",
+    "category": "minuman",
+    "price": 8000,
+    "image": "https://placehold.co/400x300/D4AF37/FFF?text=Lemon+Tea",
+    "desc": "Segar dan dingin.",
+    "options": { "type": "radio", "label": "Rasa", "values": ["Teh Manis", "Lemon Tea", "Teh Tawar"] }
+  }
+]

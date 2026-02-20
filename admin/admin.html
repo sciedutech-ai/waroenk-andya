@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Command Center - Waroenk Andya</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="admin-style.css">
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <div id="login-section" class="login-wrapper">
+        <div class="login-card">
+            <h1 class="brand-neon">Waroenk Andya</h1>
+            <p style="color:#888; margin-bottom:20px;">Staff Access Only</p>
+
+            <div id="qr-reader" class="qr-box"></div>
+            
+            <button onclick="toggleQR()" class="btn-neon-outline">
+                <i class="ri-qr-scan-2-line"></i> Login via QR Code
+            </button>
+            
+            <div class="divider"><span>ATAU</span></div>
+            
+            <div class="input-group">
+                <i class="ri-user-line"></i>
+                <input type="email" id="email" placeholder="Email Staff">
+            </div>
+            <div class="input-group">
+                <i class="ri-lock-line"></i>
+                <input type="password" id="password" placeholder="Password">
+            </div>
+            
+            <button onclick="loginEmail()" class="btn-neon-fill">MASUK SISTEM</button>
+        </div>
+    </div>
+
+    <div id="dashboard-section" class="dashboard-layout" style="display:none;">
+        
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2 class="brand-neon-small">Waroenk Andya</h2>
+                <div class="user-badge" id="user-role-display">Guest</div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <button onclick="showPage('pos')" class="nav-item active">
+                    <i class="ri-macbook-line"></i> <span>Kasir / POS</span>
+                </button>
+                <button onclick="showPage('menu')" class="nav-item">
+                    <i class="ri-book-read-line"></i> <span>Kelola Menu</span>
+                </button>
+                <button onclick="showPage('report')" class="nav-item mgr-only">
+                    <i class="ri-funds-line"></i> <span>Laporan Manager</span>
+                </button>
+                <a href="kitchen.html" target="_blank" class="nav-item mgr-only" style="text-decoration:none;">
+                    <i class="ri-restaurant-2-line"></i> <span>Layar Dapur (KDS)</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button onclick="logout()" class="btn-logout"><i class="ri-logout-circle-r-line"></i> Logout</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <section id="page-pos" class="page-section">
+                <div class="page-header">
+                    <h3><i class="ri-wireless-charging-line" style="color:var(--neon-green)"></i> Pesanan Masuk (Realtime)</h3>
+                    <div class="stats-mini">
+                        <span class="badge badge-pending">Menunggu Bayar</span>
+                        <span class="badge badge-paid">Lunas / Diproses</span>
+                    </div>
+                </div>
+                
+                <div id="orders-grid" class="orders-grid">
+                    <div class="empty-state">
+                        <i class="ri-cup-line"></i>
+                        <p>Belum ada pesanan masuk...</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="page-menu" class="page-section" style="display:none;">
+                <div class="page-header">
+                    <h3>Manajemen Menu & Galeri Produk</h3>
+                </div>
+                
+                <div class="menu-editor-card">
+                    <h4 id="form-title"><i class="ri-add-circle-line"></i> Form Menu</h4>
+                    
+                    <div class="form-grid">
+                        <form id="menu-form">
+                            <input type="hidden" id="menu-id">
+                            
+                            <div class="form-group">
+                                <label>Nama Menu</label>
+                                <input type="text" id="new-name" required placeholder="Contoh: Mie Geger">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group half">
+                                    <label>Harga (Rp)</label>
+                                    <input type="number" id="new-price" required placeholder="20000">
+                                </div>
+                                <div class="form-group half">
+                                    <label>Kategori</label>
+                                    <select id="new-cat">
+                                        <option value="spesial">Menu Spesial</option>
+                                        <option value="makanan">Makanan Berat</option>
+                                        <option value="sayuran">Sayuran</option>
+                                        <option value="dimsum">Dimsum</option>
+                                        <option value="mie-instan">Mie Instan</option>
+                                        <option value="mie-geger">Mie Geger</option>
+                                        <option value="snack">Camilan</option>
+                                        <option value="paket">Paket Hemat</option>
+                                        <option value="minuman">Minuman</option>
+                                        <option value="lainnya">Menu Lainnya</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group half">
+                                    <label>Status Stok</label>
+                                    <select id="new-status">
+                                        <option value="ready">Tersedia</option>
+                                        <option value="empty">Habis</option>
+                                    </select>
+                                </div>
+                                <div class="form-group half">
+                                    <label>Punya Varian?</label>
+                                    <select id="has-variant-toggle" onchange="toggleVariantSection()">
+                                        <option value="no">Tidak Ada</option>
+                                        <option value="yes">Ada Varian</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div id="variant-section-wrapper" style="display:none; background:#2a2a2a; padding:15px; border-radius:8px; margin-bottom:15px; border:1px dashed #555;">
+                                <label style="color:var(--neon-gold); font-weight:bold; display:block; margin-bottom:5px;">Kelola Varian Menu</label>
+                                <p style="font-size:0.8rem; color:#aaa; margin-bottom:10px; line-height:1.4;">
+                                    Ketik nama varian lalu tekan <b>Enter</b> atau tombol <b>Tambah</b>.
+                                    <br><i>Contoh: "Goreng", "Level 1", "Soto", "Es Teh"</i>
+                                </p>
+                                
+                                <div style="display:flex; gap:10px; margin-bottom:10px;">
+                                    <input type="text" id="variant-input" placeholder="Ketik varian..." style="flex:1;">
+                                    <button type="button" class="btn-add-variant" onclick="addVariantChip()" style="padding:0 15px; background:var(--neon-blue); color:#000; border:none; border-radius:5px; font-weight:bold; cursor:pointer;">Tambah</button>
+                                </div>
+
+                                <div id="variant-chips-container" class="chips-container">
+                                    </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Deskripsi Menu</label>
+                                <textarea id="new-desc" rows="3" placeholder="Deskripsi menu..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Foto Menu</label>
+                                <div id="image-previews" onclick="document.getElementById('new-photos').click()">
+                                    <i class="ri-image-add-line"></i>
+                                    <p>Klik area ini untuk pilih foto</p>
+                                </div>
+                                <input type="file" id="new-photos" multiple accept="image/*" onchange="previewImages(event)" style="display:none;">
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn-cancel" onclick="resetMenuForm()">Batal</button>
+                                <button type="button" class="btn-save" id="btn-save-menu" onclick="saveMenu()">
+                                    <i class="ri-save-line"></i> SIMPAN PRODUK
+                                </button>
+                                <button type="button" id="btn-cancel-edit" class="btn-cancel" style="display:none;" onclick="resetMenuForm()">Batal Edit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="table-responsive" style="margin-top:30px;">
+                    <table class="table-dark">
+                        <thead>
+                            <tr>
+                                <th>Foto</th>
+                                <th>Nama Menu</th>
+                                <th>Harga</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="menu-list-body">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="page-report" class="page-section" style="display:none;">
+                <div class="page-header">
+                    <div>
+                        <h3>Laporan Bisnis & Keuangan</h3>
+                        <p style="color:#aaa; font-size:0.9rem;">Analisa Laba Rugi & Arus Kas Realtime</p>
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <select id="report-filter" onchange="renderManagerReport()" style="padding:10px; background:#333; color:white; border:1px solid #555; border-radius:5px;">
+                            <option value="today">Hari Ini</option>
+                            <option value="month">Bulan Ini</option>
+                            <option value="all">Semua Data</option>
+                        </select>
+                        <button onclick="downloadPDF()" class="btn-neon-outline"><i class="ri-file-download-line"></i> Unduh PDF</button>
+                    </div>
+                </div>
+
+                <div id="report-printable" class="report-paper">
+                    <div class="report-header">
+                        <h1 style="color:#000;">LAPORAN KEUANGAN</h1>
+                        <p style="color:#555;">Waroenk Andya Sawah</p>
+                        <p id="report-period" style="font-weight:bold; margin-top:5px;">Periode: -</p>
+                    </div>
+
+                    <div class="kpi-grid">
+                        <div class="kpi-card green">
+                            <span>Total Omzet (Masuk)</span>
+                            <h2 id="rpt-revenue">Rp 0</h2>
+                            <small>Dari pesanan Lunas/Selesai</small>
+                        </div>
+                        <div class="kpi-card blue">
+                            <span>Total Transaksi</span>
+                            <h2 id="rpt-trx">0</h2>
+                            <small>Jumlah Struk Terbayar</small>
+                        </div>
+                        <div class="kpi-card red">
+                            <span>Est. Laba Bersih</span>
+                            <h2 id="rpt-profit">Rp 0</h2>
+                            <small>Margin 40% dari Omzet</small>
+                        </div>
+                    </div>
+
+                    <h4 style="color:#333; border-bottom:2px solid #000; padding-bottom:5px; margin-top:30px; margin-bottom:15px;">Rincian Transaksi Masuk</h4>
+                    <table class="table-report">
+                        <thead>
+                            <tr style="background:#333; color:white;">
+                                <th>Waktu</th>
+                                <th>ID Order</th>
+                                <th>Customer</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rpt-body">
+                            </tbody>
+                        <tfoot>
+                            <tr style="background:#eee; font-weight:bold;">
+                                <td colspan="3" style="text-align:right;">TOTAL PERIODE INI</td>
+                                <td id="tbl-total-footer">Rp 0</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    
+                    <div style="margin-top:50px; text-align:right; color:#000;">
+                        <p>Sidoarjo, <span id="sign-date">-</span></p>
+                        <br><br><br>
+                        <p>( Manager Operasional )</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <div id="thermal-print-area"></div>
+
+    <audio id="bell-sound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3"></audio>
+
+    <script type="module" src="admin-script.js"></script>
+</body>
+</html>
